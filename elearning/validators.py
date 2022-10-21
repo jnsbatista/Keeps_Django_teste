@@ -30,7 +30,7 @@ def quitter_valid(status, justification):
 
 def user_valid_enrollment(student):
     try:
-        obj = Enrollment.objects.filter(student=student, status='C')
+        obj = Enrollment.objects.filter(student=student, score=0, status='C')
         if obj:
             return False
         else:

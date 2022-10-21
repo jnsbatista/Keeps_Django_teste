@@ -122,5 +122,10 @@ REST_FRAMEWORK = {
 
 # definindo as configurações globais para o REST Framework 
     'DEFAULT_PERMISSION_CLASSES': [],
-    'TEST_REQUEST_DEFAULT_FORMAT': 'json'
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json',
+    'TEST_REQUEST_RENDERER_CLASSES': [
+        'rest_framework.renderers.MultiPartRenderer',
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.TemplateHTMLRenderer'
+    ]
 }
