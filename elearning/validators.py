@@ -1,5 +1,3 @@
-from asyncio.windows_events import NULL
-from tokenize import Number
 from elearning.models import *
 
 def reprova_valid(score, status):
@@ -38,4 +36,18 @@ def user_valid_enrollment(student):
     except:
         pass
 
+# def async_keeps_f():
+#     asyncio.run(main())
+#     print("===================================")
+#     try:      
+#         print("11111111112222222222----------------============---------") 
+#         # if not async_keeps():
+#         #     print("1----------------============---------") 
+#         #     return False
+#         # else:
+#         #     print("2----------------============---------") 
+#         #     return True
+#     except:
+#         print("3----------------============---------") 
+#         pass
     

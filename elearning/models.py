@@ -1,5 +1,3 @@
-from email.policy import default
-from random import choices
 from django.db import models
 
 class Course(models.Model):
@@ -41,3 +39,15 @@ class Enrollment(models.Model):
 
     def __str__(self):
         return self.student
+
+# class EnrollmentFullInfo(models.Model):
+#     student_name = models.ForeignKey(Student, on_delete=models.CASCADE)
+#     course_name = models.ForeignKey(Course, on_delete=models.CASCADE)
+#     course_description = models.CharField(max_length=300)
+#     course_duration = models.DecimalField(max_digits=5, decimal_places=1)
+#     enrollment_id = models.PositiveIntegerField()
+#     enrollment_date = models.DateField(auto_now=True, auto_now_add=False)
+#     enrollment_status = models.CharField(max_length=1, null=False)
+
+#     def __str__(self):
+#         return self.student_name

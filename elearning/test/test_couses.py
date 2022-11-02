@@ -8,6 +8,7 @@ from elearning.serializer import CourseSerializer
 class CoursesTestCase(APITestCase):
 
     def setUp(self):
+        """Setando os dados"""
         self.list_url = reverse('Courses-list')
         self.course_1 = Course.objects.create(
             name='CURSO 1', description='DESCRIÇÃO DO CURSO 1', holder_image=None, duration=2, date_created=None, date_updated=None
@@ -59,3 +60,5 @@ class CoursesTestCase(APITestCase):
         url = reverse('Courses-detail', kwargs={'pk': self.course_2.pk})
         response = self.client.put(url, data=data)
         self.assertEquals(response.status_code, status.HTTP_200_OK)
+
+    

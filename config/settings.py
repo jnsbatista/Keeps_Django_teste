@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'elearning',
     'rest_framework',
     'django_filters',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [

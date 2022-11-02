@@ -3,7 +3,8 @@ from elearning.models import *
 from elearning.serializer import *
 
 class StudentSerializerTestCase(TestCase):
-    def setUp(self):        
+    def setUp(self):
+        """Setando os dados"""        
         self.Student = Student(
             name='Student1', nickname='Student1', phone='48558625865', avatar=None, date_created=None, date_updated=None
         )
@@ -16,7 +17,8 @@ class StudentSerializerTestCase(TestCase):
 
 
 class CourseSerializerTestCase(TestCase):
-    def setUp(self):        
+    def setUp(self):  
+        """Setando os dados"""      
         self.Course = Course(
             name='CURSO 1', description='DESCRIÇÃO DO CURSO 1', holder_image=None, duration=2, date_created=None, date_updated=None
         )
@@ -30,6 +32,7 @@ class CourseSerializerTestCase(TestCase):
 
 class EnrollmentSerializerTestCase(TestCase):
     def setUp(self):  
+        """Setando os dados"""
         self.Student = Student(
             name='Student1', nickname='Student1', phone='48558625865', avatar=None, date_created=None, date_updated=None
         )

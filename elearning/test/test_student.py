@@ -8,10 +8,10 @@ class StudentsTestCase(APITestCase):
     def setUp(self):
         self.list_url = reverse('Students-list')
         self.student_1 = Student.objects.create(
-            id=1, name='Student1', nickname='Student1', phone='48558625865', avatar=None, date_created=None, date_updated=None
+            id=1, name='Student1', nickname='Student1', phone='48558625865', avatar=None, date_created="2022-10-11", date_updated=None
         )
         self.student_2 = Student.objects.create(
-            id=2, name='Student2', nickname='Student2', phone='48558625865', avatar=None, date_created=None, date_updated=None
+            id=2, name='Student2', nickname='Student2', phone='48558625865', avatar=None, date_created="2022-10-11", date_updated=None
         )
 
     def test_request_get_all_students_list(self):
@@ -50,4 +50,10 @@ class StudentsTestCase(APITestCase):
         }
         url = reverse('Students-detail', kwargs={'pk': self.student_2.pk})
         response = self.client.put(url, data=data)
+        self.assertEquals(response.status_code, status.HTTP_200_OK)
+
+    def test_request_get_all_students_by_start_date(self):
+        """Teste para verificar requisição GET por data de matricula de estudante"""
+        url = "/student/started/?from_date_close=2022-09-10&to_date_close=2022-10-20"
+        response = self.client.get(url)
         self.assertEquals(response.status_code, status.HTTP_200_OK)

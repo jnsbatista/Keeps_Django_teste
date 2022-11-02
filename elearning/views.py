@@ -1,9 +1,6 @@
-from urllib import request, response
-from rest_framework import viewsets, generics, filters
+from rest_framework import viewsets, generics
 from elearning.models import *
 from elearning.serializer import *
-from rest_framework.authentication import BasicAuthentication
-from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.generics import ListAPIView
 
@@ -72,6 +69,10 @@ class StartedStudentListByDate(ListAPIView):
     def get_queryset(self):
         from_date_close = self.request.GET.get('from_date_close')
         to_date_close = self.request.GET.get('to_date_close')        
-        queryset = Enrollment.objects.filter(date_created__range=(from_date_close, to_date_close))   
+        queryset = Student.objects.filter(date_created__range=(from_date_close, to_date_close))   
         return queryset
     serializer_class = StartedStudentListByDateSerializer
+
+# class EnrollmentFullInfoViewSet(viewsets.ModelViewSet):
+#     queryset = EnrollmentFullInfo.objects.all()
+#     serializer_class = EnrollmentFullInfoSerializer

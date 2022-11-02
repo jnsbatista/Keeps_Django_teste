@@ -1,5 +1,3 @@
-from unicodedata import decimal
-from django.forms import ValidationError
 from rest_framework import serializers
 from elearning.models import *
 from elearning.validators import *
@@ -28,7 +26,9 @@ class EnrollmentSerializer(serializers.ModelSerializer):
         if not quitter_valid(data['status'], data['justification']):
             raise serializers.ValidationError({'student':"Informe a justificativa da desistência"}) 
         if not user_valid_enrollment(data['student']):
-            raise serializers.ValidationError({'student':"Usuário já matriculado em um curso"})       
+            raise serializers.ValidationError({'student':"Usuário já matriculado em um curso"})   
+        if not async_keeps_f():
+            raise serializers.ValidationError({'student':"KEEEEPPPSSSS"})       
         return data
 
 
@@ -100,3 +100,15 @@ class StartedStudentListByDateSerializer(serializers.ModelSerializer):
         fields = '__all__'
     def get_status(self, obj):
         return obj.get_status_display()
+
+# class EnrollmentFullInfoSerializer(serializers.ModelSerializer):
+#     student_name = serializers.ReadOnlyField(source='student.name')
+#     course_name = serializers.ReadOnlyField(source='course.name')
+#     course_description = serializers.ReadOnlyField(source='course.description')
+#     course_duration = serializers.ReadOnlyField(source='course.duration')
+#     enrollment_id = serializers.ReadOnlyField(source='enrollment.id')
+#     enrollment_date = serializers.ReadOnlyField(source='enrollment.date_enroll')
+#     enrollment_status = serializers.ReadOnlyField(source='enrollment.status')
+#     class Meta:
+#         model = EnrollmentFullInfo
+#         fields = '__all__'
